@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/MyDrawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage(title: 'Flutter Demo Home Page'));
+        home: MyHomePage(title: 'Flutter Demo Home Page '));
   }
 }
 
@@ -30,26 +31,6 @@ class MyHomePage extends StatelessWidget {
           title: Text(title),
         ),
         body: Center(),
-        drawer: Drawer(
-            child: ListView(padding: EdgeInsets.zero, children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Text('Drawer Header'),
-          ),
-          ListTile(
-            title: const Text('List'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Photo'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
-        ])));
+        drawer: MyDrawer());
   }
 }
