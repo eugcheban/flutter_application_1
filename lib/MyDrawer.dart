@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ListPhotos.dart';
+import 'package:flutter_application_1/PhotosList.dart';
 import 'package:flutter_application_1/MyPhoto.dart';
-import 'package:flutter_application_1/main.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -16,24 +15,19 @@ class MyDrawer extends StatelessWidget {
         child: Text('Drawer Header'),
       ),
       ListTile(
-        title: const Text('Home'),
+        title: const Text('List of Photos'),
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) => MyApp()));
-        },
-      ),
-      ListTile(
-        title: const Text('List'),
-        onTap: () {
+          Navigator.pop(context);
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) => ListPhotos()));
+                  builder: (BuildContext context) => PhotosList()));
         },
       ),
       ListTile(
         title: const Text('Photo'),
         onTap: () {
+          Navigator.pop(context);
           Navigator.push(context,
               MaterialPageRoute(builder: (BuildContext context) => MyPhoto()));
         },

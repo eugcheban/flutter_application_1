@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/FetchPhotos.dart';
 import 'package:flutter_application_1/MyDrawer.dart';
+import 'package:flutter_application_1/PhotosList.dart';
+import 'package:flutter_application_1/MyPhoto.dart';
 
 void main() {
   runApp(MyApp());
+  fetchPhotos();
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +34,43 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: Center(),
+        body: Center(
+            child: Column(children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(100),
+            child: FlatButton(
+              child: Text(
+                'List of Photos',
+                style: TextStyle(fontSize: 10.0),
+              ),
+              color: Colors.blueAccent,
+              textColor: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => PhotosList()));
+              },
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.all(100),
+            child: FlatButton(
+              child: Text(
+                'Fullsize Photo',
+                style: TextStyle(fontSize: 10.0),
+              ),
+              color: Colors.blueAccent,
+              textColor: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => MyPhoto()));
+              },
+            ),
+          ),
+        ])),
         drawer: MyDrawer());
   }
 }
