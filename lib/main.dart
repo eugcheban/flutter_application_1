@@ -1,8 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/FetchPhotos.dart';
+import 'package:flutter_application_1/MyDrawer.dart';
+import 'package:flutter_application_1/PhotosList.dart';
+import 'package:flutter_application_1/MyPhoto.dart';
 
 void main() {
   runApp(MyApp());
+  fetchPhotos();
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage(title: 'Flutter Demo Home Page'));
+        home: MyHomePage(title: 'Flutter Demo Home Page '));
   }
 }
 
@@ -29,27 +34,43 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: Center(),
-        drawer: Drawer(
-            child: ListView(padding: EdgeInsets.zero, children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
+        body: Center(
+            child: Column(children: <Widget>[
+          Container(
+            margin: EdgeInsets.all(100),
+            child: FlatButton(
+              child: Text(
+                'List of Photos',
+                style: TextStyle(fontSize: 10.0),
+              ),
+              color: Colors.blueAccent,
+              textColor: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => PhotosList()));
+              },
             ),
-            child: Text('Drawer Header'),
           ),
-          ListTile(
-            title: const Text('List'),
-            onTap: () {
-              Navigator.pop(context);
-            },
+          Container(
+            margin: EdgeInsets.all(100),
+            child: FlatButton(
+              child: Text(
+                'Fullsize Photo',
+                style: TextStyle(fontSize: 10.0),
+              ),
+              color: Colors.blueAccent,
+              textColor: Colors.white,
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => MyPhoto()));
+              },
+            ),
           ),
-          ListTile(
-            title: const Text('Photo'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
-        ])));
+        ])),
+        drawer: MyDrawer());
   }
 }
